@@ -51,3 +51,19 @@ mysql> SELECT * FROM Persons;
 |        2 | Ramachari| Sandip    | Rajale    | Nandurbar |  9856244512 | ram@gamil.com              | 415002 |
 +----------+----------+-----------+-----------+-----------+-------------+----------------------------+--------+
 2 rows in set (0.01 sec)
+
+
+UC4 -> Ability to edit existing contact person
+
+mysql>  update Persons set Address = 'Mumbai' WHERE Address = 'Rajale';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM Persons;
++----------+----------+-----------+-----------+-----------+-------------+----------------------------+--------+
+| PersonID | LastName | FirstName | Address   | City      | PhoneNumber | email                      | zip    |
++----------+----------+-----------+-----------+-----------+-------------+----------------------------+--------+
+|        1 | Bhosale  | Rahul     | Shahupuri | Satara    |  9822526974 | rahulbhosale2563@gmail.com | 415002 |
+|        2 | Ramachari| Sandip    | Mumbai    | Nandurbar |  9856244512 | ram@gamil.com              | 415002 |
++----------+----------+-----------+-----------+-----------+-------------+----------------------------+--------+
+2 rows in set (0.00 sec)
