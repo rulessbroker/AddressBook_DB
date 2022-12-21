@@ -80,3 +80,14 @@ mysql> SELECT * FROM Persons;
 |        1 | Bhosale  | Rahul     | Shahupuri | Satara |  9822526974 | rahulbhosale2563@gmail.com | 415002 |
 +----------+----------+-----------+-----------+--------+-------------+----------------------------+--------+
 1 row in set (0.00 sec)
+
+UC6 -> Ability to Retrieve Person belonging to a City or State from the Address Book
+
+mysql> SELECT * FROM Persons WHERE City = 'Satara';
++----------+----------+-----------+-----------+--------+-------------+----------------------------+--------+
+| PersonID | LastName | FirstName | Address   | City   | PhoneNumber | email                      | zip    |
++----------+----------+-----------+-----------+--------+-------------+----------------------------+--------+
+|        1 | Bhosale  | Rahul     | Shahupuri | Satara |  9822526974 | rahulbhosale2563@gmail.com | 415002 |
++----------+----------+-----------+-----------+--------+-------------+----------------------------+--------+
+1 row in set (0.00 sec)
+
