@@ -164,3 +164,15 @@ mysql> select * from persons;
 |        3 | kulkarni | Radha     | shahupuri | satara   |  9822529674 | radh@gmail.com             |  415002 | book1            | family           |
 +----------+----------+-----------+-----------+----------+-------------+----------------------------+---------+------------------+------------------+
 3 rows in set (0.00 sec)
+
+UC10 -> Get number of contact persons i.e. count by type
+
+mysql> select addressbook_type, count(*) from persons group by addressbook_type;
++------------------+----------+
+| addressbook_type | count(*) |
++------------------+----------+
+| family           |        2 |
+| friends          |        1 |
++------------------+----------+
+2 rows in set (0.10 sec)
+
