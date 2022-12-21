@@ -127,3 +127,40 @@ mysql> select * from persons where city = 'satara' order by firstName;
 +----------+----------+-----------+-----------+--------+-------------+----------------------------+--------+
 2 rows in set (0.00 sec)
 
+UC9 -> Identify each address book with name and type
+
+mysql> alter table persons add column addressbook_name varchar(20), add column addressbook_type varchar(25);
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from persons;
++----------+----------+-----------+-----------+----------+-------------+----------------------------+---------+------------------+------------------+
+| PersonID | LastName | FirstName | Address   | City     | PhoneNumber | email                      | zip     | addressbook_name | addressbook_type |
++----------+----------+-----------+-----------+----------+-------------+----------------------------+---------+------------------+------------------+
+|        1 | Bhosale  | Rahul     | Shahupuri | Satara   |  9822526974 | rahulbhosale2563@gmail.com |  415002 | NULL             | NULL             |
+|        2 | serve    | ram       | akkalkot  | akkalkot |  5412698732 | ram@gmail.com              | 4153369 | NULL             | NULL             |
+|        3 | kulkarni | Radha     | shahupuri | satara   |  9822529674 | radh@gmail.com             |  415002 | NULL             | NULL             |
++----------+----------+-----------+-----------+----------+-------------+----------------------------+---------+------------------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> update persons set addressbook_name = 'book1', addressbook_type = 'family' where firstName = 'Rahul';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update persons set addressbook_name = 'book2', addressbook_type = 'friends' where firstName = 'ram';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update persons set addressbook_name = 'book1', addressbook_type = 'family' where firstName = 'Radha';
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from persons;
++----------+----------+-----------+-----------+----------+-------------+----------------------------+---------+------------------+------------------+
+| PersonID | LastName | FirstName | Address   | City     | PhoneNumber | email                      | zip     | addressbook_name | addressbook_type |
++----------+----------+-----------+-----------+----------+-------------+----------------------------+---------+------------------+------------------+
+|        1 | Bhosale  | Rahul     | Shahupuri | Satara   |  9822526974 | rahulbhosale2563@gmail.com |  415002 | book1            | family           |
+|        2 | serve    | ram       | akkalkot  | akkalkot |  5412698732 | ram@gmail.com              | 4153369 | book2            | friends          |
+|        3 | kulkarni | Radha     | shahupuri | satara   |  9822529674 | radh@gmail.com             |  415002 | book1            | family           |
++----------+----------+-----------+-----------+----------+-------------+----------------------------+---------+------------------+------------------+
+3 rows in set (0.00 sec)
