@@ -91,3 +91,4 @@ mysql> SELECT * FROM Persons WHERE City = 'Satara';
 +----------+----------+-----------+-----------+--------+-------------+----------------------------+--------+
 1 row in set (0.00 sec)
 
+UC7 -> Size of address book by city and state
