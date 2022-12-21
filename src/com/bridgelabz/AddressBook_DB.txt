@@ -176,3 +176,72 @@ mysql> select addressbook_type, count(*) from persons group by addressbook_type;
 +------------------+----------+
 2 rows in set (0.10 sec)
 
+UC11 -> Add person to both friend and family
+
+mysql> create table family(PersonID int not null auto_increment, LastName varchar(225), FirstName varchar(255), Address varchar(255), City varchar(255)
+, PhoneNumber bigint, email varchar(255), zip int, addressbook_name varchar(20), addressbook_type varchar(25), primary key(PersonID));
+Query OK, 0 rows affected (0.52 sec)
+
+mysql> desc family;
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| PersonID         | int          | NO   | PRI | NULL    | auto_increment |
+| LastName         | varchar(225) | YES  |     | NULL    |                |
+| FirstName        | varchar(255) | YES  |     | NULL    |                |
+| Address          | varchar(255) | YES  |     | NULL    |                |
+| City             | varchar(255) | YES  |     | NULL    |                |
+| PhoneNumber      | bigint       | YES  |     | NULL    |                |
+| email            | varchar(255) | YES  |     | NULL    |                |
+| zip              | int          | YES  |     | NULL    |                |
+| addressbook_name | varchar(20)  | YES  |     | NULL    |                |
+| addressbook_type | varchar(25)  | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> insert into family select * from persons where addressbook_type="family";
+Query OK, 2 rows affected (0.04 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from family;
++----------+----------+-----------+-----------+--------+-------------+----------------------------+--------+------------------+------------------+
+| PersonID | LastName | FirstName | Address   | City   | PhoneNumber | email                      | zip    | addressbook_name | addressbook_type |
++----------+----------+-----------+-----------+--------+-------------+----------------------------+--------+------------------+------------------+
+|        1 | Bhosale  | Rahul     | Shahupuri | Satara |  9822526974 | rahulbhosale2563@gmail.com | 415002 | book1            | family           |
+|        3 | kulkarni | Radha     | shahupuri | satara |  9822529674 | radh@gmail.com             | 415002 | book1            | family           |
++----------+----------+-----------+-----------+--------+-------------+----------------------------+--------+------------------+------------------+
+2 rows in set (0.00 sec)
+
+mysql> create table friends(PersonID int not null auto_increment, LastName varchar(225), FirstName varchar(255), Address varchar(255), City varchar(255
+), PhoneNumber bigint, email varchar(255), zip int, addressbook_name varchar(20), addressbook_type varchar(25), primary key(PersonID));
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> desc friends;
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| PersonID         | int          | NO   | PRI | NULL    | auto_increment |
+| LastName         | varchar(225) | YES  |     | NULL    |                |
+| FirstName        | varchar(255) | YES  |     | NULL    |                |
+| Address          | varchar(255) | YES  |     | NULL    |                |
+| City             | varchar(255) | YES  |     | NULL    |                |
+| PhoneNumber      | bigint       | YES  |     | NULL    |                |
+| email            | varchar(255) | YES  |     | NULL    |                |
+| zip              | int          | YES  |     | NULL    |                |
+| addressbook_name | varchar(20)  | YES  |     | NULL    |                |
+| addressbook_type | varchar(25)  | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+10 rows in set (0.00 sec)
+
+mysql> insert into friends select * from persons where addressbook_type="friends";
+Query OK, 1 row affected (0.10 sec)
+Records: 1  Duplicates: 0  Warnings: 0
+
+mysql> select * from friends;
++----------+----------+-----------+----------+----------+-------------+---------------+---------+------------------+------------------+
+| PersonID | LastName | FirstName | Address  | City     | PhoneNumber | email         | zip     | addressbook_name | addressbook_type |
++----------+----------+-----------+----------+----------+-------------+---------------+---------+------------------+------------------+
+|        2 | serve    | ram       | akkalkot | akkalkot |  5412698732 | ram@gmail.com | 4153369 | book2            | friends          |
++----------+----------+-----------+----------+----------+-------------+---------------+---------+------------------+------------------+
+1 row in set (0.00 sec)
+
