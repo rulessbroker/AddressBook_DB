@@ -92,3 +92,38 @@ mysql> SELECT * FROM Persons WHERE City = 'Satara';
 1 row in set (0.00 sec)
 
 UC7 -> Size of address book by city and state
+
+mysql> insert into persons(PersonID,LastName,FirstName,Address,City,PhoneNumber,email,zip)values(2,'serve','ram','akkalkot','akkalkot',5412698732,
+'ram@gmail.com',4153369),(3,'kulkarni','Radha','shahupuri','satara',9822529674,'radh@gmail.com',415002);
+Query OK, 2 rows affected (0.05 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from persons;
++----------+----------+-----------+-----------+----------+-------------+----------------------------+---------+
+| PersonID | LastName | FirstName | Address   | City     | PhoneNumber | email                      | zip     |
++----------+----------+-----------+-----------+----------+-------------+----------------------------+---------+
+|        1 | Bhosale  | Rahul     | Shahupuri | Satara   |  9822526974 | rahulbhosale2563@gmail.com |  415002 |
+|        2 | serve    | ram       | akkalkot  | akkalkot |  5412698732 | ram@gmail.com              | 4153369 |
+|        3 | kulkarni | Radha     | shahupuri | satara   |  9822529674 | radh@gmail.com             |  415002 |
++----------+----------+-----------+-----------+----------+-------------+----------------------------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select count(city) from persons where city = 'satara';
++-------------+
+| count(city) |
++-------------+
+|           2 |
++-------------+
+1 row in set (0.02 sec)
+
+UC8 -> Retrieve entries sorted alphabetically by person's name for a given city
+
+mysql> select * from persons where city = 'satara' order by firstName;
++----------+----------+-----------+-----------+--------+-------------+----------------------------+--------+
+| PersonID | LastName | FirstName | Address   | City   | PhoneNumber | email                      | zip    |
++----------+----------+-----------+-----------+--------+-------------+----------------------------+--------+
+|        3 | kulkarni | Radha     | shahupuri | satara |  9822529674 | radh@gmail.com             | 415002 |
+|        1 | Bhosale  | Rahul     | Shahupuri | Satara |  9822526974 | rahulbhosale2563@gmail.com | 415002 |
++----------+----------+-----------+-----------+--------+-------------+----------------------------+--------+
+2 rows in set (0.00 sec)
+
